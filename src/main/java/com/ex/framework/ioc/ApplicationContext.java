@@ -23,12 +23,12 @@ public class ApplicationContext {
             return (T) singletonObjects.get(beanName);
         }
 
-        if (beanName.equals("testPostService")) {
-            TestPostService testPostService = new TestPostService();
-            singletonObjects.put(beanName, testPostService);
-            return (T) testPostService;
-        }
+        Object bean = switch (beanName) {
+            case "testPostService" -> new TestPostService();
+            default -> null;
+        };
+        singletonObjects.put(beanName, bean);
 
-        return null;
+        return (T) bean;
     }
 }
