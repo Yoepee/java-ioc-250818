@@ -26,7 +26,7 @@ public class ApplicationContext {
 
         Object bean = switch (beanName) {
             case "testPostRepository" -> new TestPostRepository();
-            case "testPostService" -> new TestPostService();
+            case "testPostService" -> new TestPostService(genBean("testPostRepository"));
             default -> null;
         };
         singletonObjects.put(beanName, bean);
