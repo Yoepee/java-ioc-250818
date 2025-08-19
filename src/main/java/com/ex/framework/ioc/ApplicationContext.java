@@ -1,6 +1,7 @@
 package com.ex.framework.ioc;
 
 import com.ex.domain.testPost.repository.TestPostRepository;
+import com.ex.domain.testPost.service.TestFacadePostService;
 import com.ex.domain.testPost.service.TestPostService;
 
 import java.util.Map;
@@ -27,6 +28,7 @@ public class ApplicationContext {
         Object bean = switch (beanName) {
             case "testPostRepository" -> new TestPostRepository();
             case "testPostService" -> new TestPostService(genBean("testPostRepository"));
+            case "testFacadePostService" -> new TestFacadePostService(genBean("testPostService"), genBean("testPostRepository"));
             default -> null;
         };
         singletonObjects.put(beanName, bean);
