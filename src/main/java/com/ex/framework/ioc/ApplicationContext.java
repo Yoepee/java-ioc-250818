@@ -1,5 +1,6 @@
 package com.ex.framework.ioc;
 
+import com.ex.domain.testPost.repository.TestPostRepository;
 import com.ex.domain.testPost.service.TestPostService;
 
 import java.util.Map;
@@ -24,6 +25,7 @@ public class ApplicationContext {
         }
 
         Object bean = switch (beanName) {
+            case "testPostRepository" -> new TestPostRepository();
             case "testPostService" -> new TestPostService();
             default -> null;
         };

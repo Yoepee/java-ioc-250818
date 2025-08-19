@@ -1,4 +1,4 @@
 package com.ex.framework.annotations;
 
-public @interface Service {
+public @interface Repository {
 }

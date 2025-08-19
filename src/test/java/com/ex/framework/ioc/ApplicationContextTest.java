@@ -1,5 +1,6 @@
 package com.ex.framework.ioc;
 
+import com.ex.domain.testPost.repository.TestPostRepository;
 import com.ex.domain.testPost.service.TestPostService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -41,5 +42,14 @@ public class ApplicationContextTest {
                 .genBean("testPostService");
 
         assertThat(testPostService1).isSameAs(testPostService2);
+    }
+
+    @Test
+    @DisplayName("testPostRepository")
+    public void t4() {
+        TestPostRepository testPostRepository = applicationContext
+                .genBean("testPostRepository");
+
+        assertThat(testPostRepository).isNotNull();
     }
 }
